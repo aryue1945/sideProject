@@ -10,7 +10,6 @@ read all the txt report produeced by CPU2006 runspec, and generate report to com
 
 """
 BLOCKS = 'blocks.dat'
-OUTFILE = 'runtimeStat.txt'
 BENCHMARK = re.compile(r'(\d{3}\.\w+)')
 BASERATE = re.compile(r'(\d+\.\d) [S|\*]')
 GEOMEAN = re.compile(r'Est. SPECfp\(R\)_rate_base2006  *(\d+\.\d)')
@@ -30,6 +29,7 @@ def variation(L):
 def main(args):    
   inputdir = os.path.abspath(args.input_path)
   outputdir = os.path.abspath(args.output_path)
+  OUTFILE = args.reportfilename
 
   benchmark = []
   allResults = dict()
@@ -59,7 +59,6 @@ def main(args):
     if (set(benchmark) != set(n)):
       print("Data not match")
       exit(-1)
-  print(geoMean)
   f = open(os.path.join(outputdir,OUTFILE), 'w')
   # report first line - test name
   f.write("\t")
@@ -95,6 +94,7 @@ if __name__ == '__main__':
   produce heuristic cost report in the output path""")
   parser.add_argument('input_path', help='input directory')
   parser.add_argument('output_path', help='output directory')
+  parser.add_argument('reportfilename', help='output filename')
 
   args = parser.parse_args()
   main(args)

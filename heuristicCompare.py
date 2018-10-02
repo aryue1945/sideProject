@@ -77,6 +77,5 @@ if __name__ == '__main__':
   parser.add_argument('reportfilename', help='output filename')
 
   args = parser.parse_args()
-  print(args)
   main(args)
 
