@@ -74,9 +74,9 @@ if __name__ == '__main__':
   produce heuristic cost report in the output path""")
   parser.add_argument('input_path', help='input directory')
   parser.add_argument('output_path', help='output directory')
-  parser.add_argument('reportfilename', help='output directory')
+  parser.add_argument('reportfilename', help='output filename')
 
   args = parser.parse_args()
-
+  print(args)
   main(args)
 
